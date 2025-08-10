@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Aurélia Lingerie" />
+  <title>Aurélia Lingerie</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root {
+      --bordo: #5b2333; /* tom vinho elegante */
+      --rosa-po: #f3c6c8; /* rosa suave */
+      --dourado: #d4af37; /* detalhes luxuosos */
+    }
+    .selected {
+      border: 2px solid var(--dourado);
+      background-color: rgba(212, 175, 55, 0.15);
+    }
+    body {
+      padding: 50px;
+      background-color: var(--bordo);
+      color: white;
+      font-family: sans-serif;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('logofundo.png');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.25;
+      z-index: -1;
+    }
+    .tamanho-select {
+      margin-top: 8px;
+      padding: 4px;
+      border-radius: 6px;
+      border: 1px solid var(--dourado);
+      color: black;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <!-- HEADER -->
+  <header class="p-4 bg-[var(--rosa-po)] flex justify-center items-center shadow-md">
+    <img src="logofundo.png" alt="Logo" class="w-32 md:w-48 h-auto" />
+  </header>
+
+  <!-- PRODUTOS -->
+  <section class="p-8 text-center">
+    <h2 class="text-4xl font-extrabold mb-10">Escolha seu modelo e tamanho!</h2>
+    <div id="produtos" class="grid gap-3 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 justify-items-center">
+      <!-- Loop dos modelos -->
+      <script>
+        const modelos = [
+          "Modelo A", "Modelo B", "Modelo C", "Modelo D", "Modelo E",
+          "Modelo F", "Modelo G", "Modelo H", "Modelo I", "Modelo J"
+        ];
+        modelos.forEach((modelo, index) => {
+          document.write(`
+            <div onclick="selecionarUnico(this)" class="toggleable bg-white bg-opacity-10 p-3 rounded-xl shadow-lg hover:scale-105 transition cursor-pointer" data-item="${modelo}">
+              <img src="01.jpg" alt="${modelo}" />
+              <p class="text-md font-semibold">Lingerie de Luxo ${String(index + 1).padStart(2, '0')}</p>
+              <select class="tamanho-select" onchange="selecionarTamanho(this)">
+                <option value="">Selecione o tamanho</option>
+                <option value="P">P</option>
+                <option value="M">M</option>
+                <option value="G">G</option>
+                <option value="GG">GG</option>
+              </select>
+            </div>
+          `);
+        });
+      </script>
+    </div>
+  </section>
+
+
+<!-- FORMULÁRIO -->
+	<section class="p-8 text-center" style="background: linear-gradient(135deg, rgb(243, 198, 200) 0%, rgb(91, 35, 51) 100%);">
+		<div class="max-w-lg mx-auto bg-white bg-opacity-90 p-8 rounded-2xl shadow-2xl border-4" style="border-color: rgb(212, 175, 55);">
+			<h2 class="text-4xl font-extrabold mb-6 text-[rgb(91,35,51)]">💌 Solicitar via WhatsApp</h2>
+			<p class="mb-6 text-lg text-gray-700">Preencha seus dados para receber atendimento exclusivo e rápido.</p>
+			<form id="form-orcamento" class="space-y-6" onsubmit="enviarFormulario(); return false;">
+			<div class="relative">
+			<input type="text" id="nome" name="nome" placeholder=" " class="peer w-full p-4 rounded-lg border-2 border-[rgb(212,175,55)] focus:outline-none focus:border-[rgb(91,35,51)] text-black" required />
+			<label for="nome" class="absolute left-4 -top-3.5 text-sm bg-white px-1 text-[rgb(91,35,51)] transition-all peer-placeholder-shown:top-4 peer-placeholder-shown:text-gray-500 peer-placeholder-shown:text-base">Nome do Personagem</label>
+			</div>
+			
+		<div class="relative">
+			<input type="text" id="contato" name="contato" placeholder=" " class="peer w-full p-4 rounded-lg border-2 border-[rgb(212,175,55)] focus:outline-none focus:border-[rgb(91,35,51)] text-black" required />
+			<label for="contato" class="absolute left-4 -top-3.5 text-sm bg-white px-1 text-[rgb(91,35,51)] transition-all peer-placeholder-shown:top-4 peer-placeholder-shown:text-gray-500 peer-placeholder-shown:text-base">Nome Completo</label>
+		</div>
+		
+		<div class="relative">
+			<input type="tel" id="telefone" name="telefone" placeholder=" " pattern="[0-9]+" class="peer w-full p-4 rounded-lg border-2 border-[rgb(212,175,55)] focus:outline-none focus:border-[rgb(91,35,51)] text-black" required />
+			<label for="telefone" class="absolute left-4 -top-3.5 text-sm bg-white px-1 text-[rgb(91,35,51)] transition-all peer-placeholder-shown:top-4 peer-placeholder-shown:text-gray-500 peer-placeholder-shown:text-base">Telefone</label>
+		</div>
+		<button type="submit" class="w-full py-4 rounded-xl font-bold text-white text-lg shadow-lg transform transition hover:scale-105"
+        style="background: linear-gradient(90deg, rgb(91,35,51) 0%, rgb(212,175,55) 100%);">
+        📲 Enviar no WhatsApp
+		</button>
+    </form>
+  </div>
+</section>
+
+
+  <!-- RODAPÉ -->
+  <footer class="bg-[var(--bordo)] text-white text-center py-6 mt-8">
+    <p>&copy; 2025 Aurélia Lingerie. Todos os direitos reservados.</p>
+    <p>Contato: (31) 98698-5930 | Email: contato@aurelialingerie.com.br</p>
+  </footer>
+
+  <script>
+    let tamanhoSelecionado = '';
+    function selecionarTamanho(select) {
+      tamanhoSelecionado = select.value;
+    }
+    function enviarFormulario() {
+      const nome = document.getElementById('nome').value.trim();
+      const contato = document.getElementById('contato').value.trim();
+      const telefone = document.getElementById('telefone').value.trim();
+      const selecionado = document.querySelector('.toggleable.selected');
+      if (!nome || !contato || !telefone) {
+        alert('Por favor, preencha todos os campos.');
+        return;
+      }
+      if (!selecionado) {
+        alert('Selecione um modelo.');
+        return;
+      }
+      if (!tamanhoSelecionado) {
+        alert('Selecione um tamanho.');
+        return;
+      }
+      const item = selecionado.dataset.item;
+      const texto = `Olá! Gostaria de comprar uma lingerie.
+*Modelo:* ${item}
+*Tamanho:* ${tamanhoSelecionado}
+*Nome do Personagem:* ${nome}
+*Nome Completo:* ${contato}
+📞 *Telefone:* ${telefone}`;
+      const numeroWhatsApp = '5531986985930';
+      const url = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(texto)}`;
+      window.open(url, '_blank');
+    }
+    function selecionarUnico(element) {
+      document.querySelectorAll('.toggleable').forEach(el => el.classList.remove('selected'));
+      element.classList.add('selected');
+    }
+  </script>
+</body>
+</html>

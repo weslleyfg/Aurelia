@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Aurellia Calçados | Veja Mais! </title>
+<title>SneakerZone</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <style>
 :root {
@@ -17,26 +17,29 @@ body {
   font-family: 'Inter', sans-serif;
   background: var(--primary-dark);
   color: white;
-  padding: 0;
-  margin: 0;
+  padding: 16px;
   transition: background 0.3s ease;
 }
 
 header img {
   max-width: 180px;
-  margin: 0 auto;
+  margin: 0 auto 20px;
   display: block;
   transition: transform 0.3s ease;
 }
+
 header img:hover { transform: scale(1.05); }
+
+h1, h2, h3 { text-align: center; }
 
 /* Cards */
 .products-grid {
   display: grid;
   gap: 1.5rem;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   justify-items: center;
 }
+
 .product-card {
   background: var(--card-bg);
   border-radius: 16px;
@@ -52,6 +55,7 @@ header img:hover { transform: scale(1.05); }
   opacity: 0;
   transform: translateY(20px);
 }
+
 .product-card.show { opacity: 1; transform: translateY(0); }
 .product-card:hover {
   transform: translateY(-5px) scale(1.03);
@@ -66,18 +70,21 @@ header img:hover { transform: scale(1.05); }
   transition: transform 0.3s ease;
 }
 .product-card img:hover { transform: scale(1.05); }
+
 .product-body {
   padding: 12px;
   text-align: center;
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 10px;
   width: 100%;
   background: rgba(255,255,255,0.1);
   border-radius: 12px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.3);
 }
-.product-title { font-weight: 700; font-size: 1rem; }
+
+.product-title { font-weight: 700; font-size: 1rem; transition: color 0.3s ease; }
 .badge {
   position: absolute;
   top: 8px;
@@ -90,7 +97,8 @@ header img:hover { transform: scale(1.05); }
   font-weight: 700;
   animation: pop 0.6s ease;
 }
-@keyframes pop { 0%{transform:scale(0.5);opacity:0;}100%{transform:scale(1);opacity:1;} }
+@keyframes pop { 0% { transform: scale(0.5); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
+
 .selected { border-color: var(--primary-light); box-shadow: 0 12px 30px rgba(0,0,0,0.5); filter: brightness(1.15); }
 
 /* Inputs */
@@ -106,17 +114,12 @@ header img:hover { transform: scale(1.05); }
   font-size: 1rem;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
-.tamanho-select:hover, .quantidade-input:hover {
-  transform: scale(1.1);
-  box-shadow: 0 6px 18px rgba(0,0,0,0.5);
-}
+.tamanho-select:hover, .quantidade-input:hover { transform: scale(1.1); box-shadow: 0 6px 18px rgba(0,0,0,0.5); }
 .tamanho-select:focus, .quantidade-input:focus {
-  outline: none;
-  border-color: var(--primary-dark);
-  box-shadow: 0 6px 20px rgba(0,0,0,0.6);
+  outline: none; border-color: var(--primary-dark); box-shadow: 0 6px 20px rgba(0,0,0,0.6);
 }
 
-/* Form */
+/* Formulário */
 .form-panel {
   background: linear-gradient(135deg, var(--secondary-light) 0%, var(--primary-light) 100%);
   padding: 24px;
@@ -140,123 +143,98 @@ header img:hover { transform: scale(1.05); }
   border: 2px solid var(--primary-light);
   margin-top: 8px;
 }
-.error-msg { color: red; font-size: 0.8rem; margin-top: 4px; }
 .btn-whatsapp {
   width: 100%;
   padding: 14px;
   border-radius: 12px;
   background: linear-gradient(90deg, var(--primary-dark) 0%, var(--primary-light) 100%);
-  color: white;
-  font-weight: 700;
-  font-size: 1rem;
-  cursor: pointer;
-  margin-top: 12px;
+  color: white; font-weight: 700; font-size: 1rem;
+  cursor: pointer; margin-top: 12px;
 }
-.btn-whatsapp:hover { transform: translateY(-3px) scale(1.02); }
-
-/* WhatsApp Float */
+.btn-whatsapp:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 10px 30px rgba(0,0,0,0.4); }
 .whatsapp-fixed {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background: var(--primary-light);
-  color: var(--primary-dark);
-  padding: 14px;
-  border-radius: 50%;
-  font-size: 1.5rem;
-  z-index: 100;
-  cursor: pointer;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+  position: fixed; bottom: 20px; right: 20px;
+  background: var(--primary-light); color: var(--primary-dark);
+  padding: 14px; border-radius: 50%; font-size: 1.5rem;
+  z-index: 100; cursor: pointer; box-shadow: 0 8px 20px rgba(0,0,0,0.5);
 }
 .whatsapp-fixed:hover { transform: scale(1.1); }
 
+/* Responsivo */
 @media (max-width: 1024px) { .product-card img { height: 160px; } }
-@media (max-width: 768px) { .product-card img { height: 150px; } }
-@media (max-width: 480px) { .product-card img { height: 140px; } }
+@media (max-width: 768px) { .product-card img { height: 150px; } body { padding: 12px; } }
+@media (max-width: 480px) {
+  .product-card img { height: 140px; }
+  .tamanho-select, .quantidade-input { width: 90%; padding: 14px; font-size: 1.1rem; }
+  .form-panel { padding: 16px; }
+}
 </style>
 </head>
 <body>
 
-<!-- NAV -->
-<header class="flex justify-between items-center px-8 py-6 bg-black sticky top-0 z-50 shadow-lg">
-  <img src="logodundo.png" alt="SneakerZone Logo" class="h-12">
-  <nav>
-    <ul class="flex gap-6 text-lg">
-      <li><a href="#produtos" class="hover:text-yellow-400">Coleção</a></li>
-      <li><a href="#formulario" class="hover:text-yellow-400">Pedido</a></li>
-      <li><a href="#mapa" class="hover:text-yellow-400">Localização</a></li>
-    </ul>
-  </nav>
-  <a href="#produtos" class="border border-yellow-400 px-1 py-50 rounded-lg hover:bg-yellow-400 hover:text-black transition">
-     Comprar Agora
-  </a>
+<!-- Hero estilo Wibx -->
+<section class="text-center py-8 bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-200 rounded-2xl shadow-lg mb-10">
+  <h1 class="text-4xl font-extrabold text-black mb-3">Transforme estilo em atitude</h1>
+  <p class="text-lg text-black/80 mb-6">Confira os tênis exclusivos da <b>Aurellia Calçados!</b> e leve autenticidade para o seu dia.</p>
+  <a href="#produtos" class="px-6 py-3 bg-black text-yellow-400 font-bold rounded-xl shadow-md hover:scale-105 transition">🔥 Ver Coleção</a>
+</section>
+
+<!-- Logo -->
+<header>
+  <img src="logodundo.png" alt="SneakerZone Logo">
+  <h2 class="text-3xl font-extrabold mb-6">Bem-vindo à Aurellia Calçados!</h2>
 </header>
 
-<!-- HERO -->
-<section class="text-center py-20 bg-gradient-to-b from-black to-yellow-900">
-  <span class="bg-yellow-400 text-black px-3 py-1 rounded-full text-sm font-semibold">Aurellia Calçados! </span>
-  <h1 class="text-5xl font-bold mt-4">Transforme seus passos em <span class="text-yellow-400">atitude</span>.</h1>
-  <p class="text-lg text-gray-300 mt-4">Tênis exclusivos, conforto e estilo em um só lugar.</p>
+<!-- Produtos -->
+<section>
+  <h2 class="text-2xl font-bold mb-4">Escolha seus Tênis</h2>
+  <div id="produtos" class="products-grid"></div>
 </section>
 
-<!-- PRODUTOS -->
-<section id="produtos" class="px-6 py-12">
-  <h2 class="text-3xl font-bold mb-8 text-center">Escolha seus Tênis</h2>
-  <div id="produtos-lista" class="products-grid"></div>
-</section>
-
-<!-- FORM -->
-<section id="formulario" class="form-panel">
+<!-- Formulário -->
+<section class="form-panel">
   <div class="form-card">
     <h3 class="text-xl font-bold mb-2">💌 Enviar Pedido via WhatsApp</h3>
-    <form id="form-orcamento" onsubmit="enviarFormulario(event)">
+    <form id="form-orcamento" class="space-y-2" onsubmit="enviarFormulario(event)">
       <input id="codigo" class="form-input" type="text" placeholder="Código do Pedido" required />
-      <div id="error-codigo" class="error-msg"></div>
       <input id="nome" class="form-input" type="text" placeholder="Nome Completo" required />
-      <div id="error-nome" class="error-msg"></div>
       <input id="telefone" class="form-input" type="tel" placeholder="Telefone com DDD" required />
-      <div id="error-telefone" class="error-msg"></div>
-      <div id="error-produtos" class="error-msg"></div>
+      <div id="error-produtos" class="error-msg text-red-600 text-sm"></div>
       <button type="submit" class="btn-whatsapp">📲 Enviar no WhatsApp</button>
     </form>
   </div>
 </section>
 
-<!-- MAPA -->
-<section id="mapa" class="py-16 bg-gray-950">
-  <h3 class="text-3xl font-bold text-center mb-8">Encontre-nos</h3>
-  <div class="flex justify-center">
+<!-- Google Maps -->
+<section class="mt-10">
+  <h3 class="text-2xl font-bold text-center mb-4">📍 Onde Estamos</h3>
+  <div class="w-full h-96 rounded-xl overflow-hidden shadow-lg">
     <iframe 
-      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3656.530568043553!2d-46.66232578447637!3d-23.588213868500996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce59c92a6b3d1d%3A0x3c8a5d8f5e2e19d3!2sPaulista!5e0!3m2!1spt-BR!2sbr!4v1672440700000!5m2!1spt-BR!2sbr" 
-      width="800" height="450" style="border:0;" allowfullscreen="" loading="lazy">
-    </iframe>
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3656.6840078323657!2d-46.65657138502194!3d-23.580064868563564!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce59c7c0f9c8a9%3A0xabc123456789!2sSneakerZone!5e0!3m2!1spt-BR!2sbr!4v1677439575089" 
+      width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
   </div>
 </section>
 
-<!-- FOOTER -->
-<footer class="text-center text-white/80 mt-8 py-6 border-t border-gray-800">
-  <p>&copy; 2025 Aurellia Calçados!</p>
-  <p>Contato: (31) 98856-0014 | contato@aurelliacalcados.com.br</p>
-</footer>
-
+<!-- WhatsApp Flutuante -->
 <div class="whatsapp-fixed" onclick="abrirWhatsApp()">📲</div>
+
+<!-- Rodapé -->
+<footer class="text-center text-white/80 mt-8">
+  <p>&copy; 2025 Aurellia Calçados!</p>
+  <p>Contato: (31) 98698-5930 | contato@AurelliaCalcados!.com.br</p>
+</footer>
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
   const modelos = [
-    { nome: "Modelo 01", img: "img/01.jpg", badge: "Novo" },
-    { nome: "Modelo 02", img: "img/02.jpg", badge: "Promo" },
-    { nome: "Modelo 03", img: "img/03.jpg", badge: "Novo" },
-    { nome: "Modelo 04", img: "img/04.jpg" },
-    { nome: "Modelo 05", img: "img/05.jpg" },
-    { nome: "Modelo 06", img: "img/06.jpg" },
-	{ nome: "Modelo 07", img: "img/07.jpg" },
-	{ nome: "Modelo 08", img: "img/08.jpg" },
-	{ nome: "Modelo 09", img: "img/09.jpg" },
-	{ nome: "Modelo 10", img: "img/10.jpg" },
+    { nome: "Air Max 2025", img: "img/01.jpg", badge: "Novo" },
+    { nome: "Jordan Retro", img: "img/02.jpg", badge: "Promo" },
+    { nome: "Yeezy Boost", img: "img/03.jpg", badge: "Novo" },
+    { nome: "Nike React", img: "img/04.jpg" },
+    { nome: "Adidas Superstar", img: "img/05.jpg" }
   ];
 
-  const produtosContainer = document.getElementById('produtos-lista');
+  const produtosContainer = document.getElementById('produtos');
 
   modelos.forEach((modelo, i) => {
     const card = document.createElement('div');
@@ -281,6 +259,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <input type='number' min='1' value='1' class='quantidade-input' />
       </div>
     `;
+
     setTimeout(() => { card.classList.add('show'); }, i * 150);
 
     card.addEventListener('click', () => {
@@ -300,40 +279,30 @@ document.addEventListener('DOMContentLoaded', () => {
 
     produtosContainer.appendChild(card);
   });
-
-  const telefoneInput = document.getElementById('telefone');
-  telefoneInput.addEventListener('input', () => {
-    let valor = telefoneInput.value.replace(/\D/g, "");
-    if (valor.length > 11) valor = valor.slice(0, 11);
-    if (valor.length > 6) telefoneInput.value = `(${valor.slice(0,2)}) ${valor.slice(2,7)}-${valor.slice(7)}`;
-    else if (valor.length > 2) telefoneInput.value = `(${valor.slice(0,2)}) ${valor.slice(2)}`;
-    else telefoneInput.value = valor;
-  });
 });
 
 function enviarFormulario(e){
   e.preventDefault();
   document.querySelectorAll('.error-msg').forEach(el => el.textContent = '');
+
   const codigo = document.getElementById('codigo').value.trim();
   const nome = document.getElementById('nome').value.trim();
   const telefone = document.getElementById('telefone').value.trim();
-  let valid = true;
-  if(!codigo){ document.getElementById('error-codigo').textContent = 'Campo obrigatório'; valid = false; }
-  if(!nome){ document.getElementById('error-nome').textContent = 'Campo obrigatório'; valid = false; }
-  const numTelefone = telefone.replace(/\D/g, "");
-  if(!(numTelefone.length===10 || numTelefone.length===11)) { document.getElementById('error-telefone').textContent = 'Telefone inválido'; valid = false; }
+
   const selecionados = document.querySelectorAll('.product-card.selected');
-  if(!selecionados.length){ document.getElementById('error-produtos').textContent = 'Selecione um tênis'; valid = false; }
+  if(!selecionados.length){ document.getElementById('error-produtos').textContent = 'Selecione um tênis'; return; }
+
   let lista = '';
   selecionados.forEach((el,i) => {
-    if(!el.dataset.size){ document.getElementById('error-produtos').textContent = `Escolha o tamanho do ${el.dataset.item}`; valid = false; return; }
+    if(!el.dataset.size){ document.getElementById('error-produtos').textContent = `Escolha o tamanho do ${el.dataset.item}`; return; }
     lista += `\n${i+1}. *${el.dataset.item}* - Tam: ${el.dataset.size} - Qtde: ${el.dataset.qty}`;
   });
-  if(!valid) return;
-  const texto = `Olá! Gostaria de fazer um pedido.\n\n*Itens:*${lista}\n\n*Código do Pedido:* ${codigo}\n*Nome:* ${nome}\n*Telefone:* ${numTelefone}`;
+
+  const texto = `Olá! Gostaria de fazer um pedido.\n\n*Itens:*${lista}\n\n*Código do Pedido:* ${codigo}\n*Nome:* ${nome}\n*Telefone:* ${telefone}`;
   const numeroWhatsApp = "5531988560014";
   window.open(`https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(texto)}`, '_blank');
 }
+
 function abrirWhatsApp(){ window.open("https://wa.me/5531988560014", "_blank"); }
 </script>
 
